@@ -5,8 +5,28 @@ pragma solidity ^0.8.1;
 contract SkoinToken {
 
     uint256 public totalSupply;
-    
-    constructor(){
-        totalSupply = 100000;
+    mapping(address => uint256) public balanceOf;
+    string public name = "Skoin";    
+    string public symbol = "SKM";    
+    string public standard = "Skoin Toekn 1.0";    
+
+    event Transfer(
+        address indexed _from,
+        address indexed _to,
+        uint256 _value 
+    );
+
+    constructor(uint256 _initialSupply){
+        balanceOf[msg.sender] = _initialSupply;
+        totalSupply = _initialSupply;
+    }
+
+    function transfer(address payable _to, uint256 _value) public returns(bool success){
+        require(balanceOf[msg.sender] >= _value, "Balance is less than amount");
+
+        balanceOf[msg.sender] -= _value;
+        balanceOf[_to] += _value;
+
+        emit Transfer(msg.sender, _to, _value);
     }
 }

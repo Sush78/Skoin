@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "/Users/sushantkumar/Documents/coding/Skoin/smart_contract/contracts/SkoinToken.sol": {
-      "lastModificationDate": 1665914609590,
-      "contentHash": "8847417479462d678798ad2140bd9f1f",
+      "lastModificationDate": 1665958392364,
+      "contentHash": "55349c91ca0e68c8ec7c41468d88c036",
       "sourceName": "contracts/SkoinToken.sol",
       "solcConfig": {
         "version": "0.8.17",
