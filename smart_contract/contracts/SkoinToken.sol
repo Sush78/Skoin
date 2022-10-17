@@ -28,7 +28,7 @@ contract SkoinToken {
         totalSupply = _initialSupply;
     }
 
-    function transfer(address payable _to, uint256 _value) public returns(bool success){
+    function transfer(address _to, uint256 _value) public returns(bool success){
         require(balanceOf[msg.sender] >= _value, "Balance is less than amount");
 
         balanceOf[msg.sender] -= _value;
@@ -46,7 +46,7 @@ contract SkoinToken {
     }
 
     // Transfer Skoin tokens to approved account, msg.sender is a thrid party and _from will be the owner
-    function transferFrom(address payable _from, address payable _to, uint256 _value) public returns(bool success){
+    function transferFrom(address _from, address _to, uint256 _value) public returns(bool success){
         require(balanceOf[_from] >= _value, "Balance is less than transfer value");
         require(allowance[_from][msg.sender] >= _value, "allowance is less than the transfer value");
         balanceOf[_from] -= _value;
