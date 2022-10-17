@@ -79,12 +79,25 @@ describe("SkoinToken", () =>{
             "allowance is less than the transfer value"
           );
         });
-        it("Should upadte balance correctly for transferFrom", async function () {
-          const { skoinToken, owner, otherAccount ,otherAccount2, totalSupply } = await loadFixture(deployToken);
+        it("Should update balance correctly for transferFrom", async function () {
+          const { skoinToken, owner, otherAccount, totalSupply } = await loadFixture(deployToken);
           await skoinToken.approve(otherAccount.address, 102);
           await skoinToken.allowance(owner.address,otherAccount.address);
           await skoinToken.connect(otherAccount).transferFrom(owner.address, otherAccount.address, 100);
           expect(await skoinToken.balanceOf(owner.address)).to.be.equal(totalSupply-100);
+        });
+        it("Should update allowance correctly for transferFrom", async function () {
+          const { skoinToken, owner, otherAccount } = await loadFixture(deployToken);
+          await skoinToken.approve(otherAccount.address, 102);
+          await skoinToken.allowance(owner.address,otherAccount.address);
+          await skoinToken.connect(otherAccount).transferFrom(owner.address, otherAccount.address, 100);
+          expect(await skoinToken.allowance(owner.address,otherAccount.address)).to.be.equal(2);
+        });
+        it("Should amit Transfer event for transferFrom", async function () {
+          const { skoinToken, owner, otherAccount } = await loadFixture(deployToken);
+          await skoinToken.approve(otherAccount.address, 102);
+          await skoinToken.allowance(owner.address,otherAccount.address);
+          expect(await skoinToken.connect(otherAccount).transferFrom(owner.address, otherAccount.address, 100)).to.emit(skoinToken, "Transfer");
         });
     })
 })
