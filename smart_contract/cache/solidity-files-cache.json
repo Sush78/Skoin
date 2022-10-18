@@ -37,8 +37,8 @@
       ]
     },
     "/Users/sushantkumar/Documents/coding/Skoin/smart_contract/contracts/SkoinTokenSale.sol": {
-      "lastModificationDate": 1666047553202,
-      "contentHash": "34c2e04181864a06bf606a2eac7189b2",
+      "lastModificationDate": 1666090613227,
+      "contentHash": "957feff02d720b4f6bbfd1d6629e3ee4",
       "sourceName": "contracts/SkoinTokenSale.sol",
       "solcConfig": {
         "version": "0.8.17",
